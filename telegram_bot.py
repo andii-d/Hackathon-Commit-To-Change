@@ -1,3 +1,10 @@
+'''
+BOT NAME: 'credo'
+BOT USERNAME: 'credoAIBot'
+LINK: 't.me/credoAIBot'
+API KEY: '8547384446:AAE4ZMAiLSSnCT3WGad-bv3kyPcbB-4KzGs'
+'''
+
 from telegram import Update
 from telegram.ext import (
     ApplicationBuilder,
@@ -17,6 +24,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await update.message.reply_text(
         f"Got it: {text}. What habit did you complete?"
     )
+    await update.message.reply_text("Great job! Keep it up!")
 
 
 def main():
