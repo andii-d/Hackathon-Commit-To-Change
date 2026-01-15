@@ -1,16 +1,30 @@
-from flask import Flask, request
-from twilio.twiml.messaging_response import MessagingResponse
+from telegram import Update
+from telegram.ext import (
+    ApplicationBuilder,
+    CommandHandler,
+    ContextTypes,
+    MessageHandler,
+    filters,
+)
 
-app = Flask(__name__)
+
+async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    await update.message.reply_text("Hi! Tell me a habit you completed.")
 
 
-@app.route("/sms", methods=["POST"])
-def sms():
-    incoming = request.form.get("Body", "")
-    resp = MessagingResponse()
-    resp.message(f"Got it: {incoming}. What habit did you complete?")
-    return str(resp)
+async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
+    text = update.message.text or ""
+    await update.message.reply_text(
+        f"Got it: {text}. What habit did you complete?"
+    )
+
+
+def main():
+    app = ApplicationBuilder().token("YOUR_BOT_TOKEN").build()
+    app.add_handler(CommandHandler("start", start))
+    app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
+    app.run_polling()
 
 
 if __name__ == "__main__":
-    app.run(port=5000, debug=True)
+    main()
