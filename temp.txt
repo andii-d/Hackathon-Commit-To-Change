@@ -1,3 +1,4 @@
 BOT NAME: 'brenda'
 BOT USERNAME: 'brendaHabitBot'
 LINK: 't.me/brendaHabitBot'
+API KEY: '8165575389:AAG0wYSwcr9XqZCH9dFKVvJ-lIRkuO3PWs4'
