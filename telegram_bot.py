@@ -20,7 +20,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 
 def main():
-    app = ApplicationBuilder().token("8165575389:AAG0wYSwcr9XqZCH9dFKVvJ-lIRkuO3PWs4").build()
+    app = ApplicationBuilder().token("8547384446:AAE4ZMAiLSSnCT3WGad-bv3kyPcbB-4KzGs").build()
     app.add_handler(CommandHandler("start", start))
     app.add_handler(MessageHandler(filters.TEXT & ~filters.COMMAND, handle_message))
     app.run_polling()
